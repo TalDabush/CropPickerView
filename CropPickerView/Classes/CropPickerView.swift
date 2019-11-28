@@ -45,7 +45,7 @@ public class CropPickerView: UIView {
             self.scrollView.setZoomScale(1, animated: false)
             if self.scrollView.delegate == nil {
                 self.initVars()
-            } 
+            }
             self.cropLineHidden(newValue)
             self.scrollView.layoutIfNeeded()
             self.dimLayerMask(animated: false)
@@ -78,10 +78,10 @@ public class CropPickerView: UIView {
             self.leftBottomButton.edgeLine(newValue)
             self.rightTopButton.edgeLine(newValue)
             self.rightBottomButton.edgeLine(newValue)
-            self.topButton.edgeLine(newValue)
-            self.leftButton.edgeLine(newValue)
-            self.rightButton.edgeLine(newValue)
-            self.bottomButton.edgeLine(newValue)
+//            self.topButton.edgeLine(newValue)
+//            self.leftButton.edgeLine(newValue)
+//            self.rightButton.edgeLine(newValue)
+//            self.bottomButton.edgeLine(newValue)
         }
     }
     
@@ -143,10 +143,10 @@ public class CropPickerView: UIView {
     // If false, the cropview and dimview will disappear and only the view will be zoomed in or out.
     public var isCrop = true {
         willSet {
-            self.topButton.isHidden = !newValue
-            self.bottomButton.isHidden = !newValue
-            self.leftButton.isHidden = !newValue
-            self.rightButton.isHidden = !newValue
+//            self.topButton.isHidden = !newValue
+//            self.bottomButton.isHidden = !newValue
+//            self.leftButton.isHidden = !newValue
+//            self.rightButton.isHidden = !newValue
             self.leftTopButton.isHidden = !newValue
             self.leftBottomButton.isHidden = !newValue
             self.rightTopButton.isHidden = !newValue
@@ -156,6 +156,8 @@ public class CropPickerView: UIView {
             self.cropView.isHidden = !newValue
         }
     }
+    
+    
     
     // MARK: Private Property
     
@@ -173,6 +175,8 @@ public class CropPickerView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.edgesConstraint(subView: imageView)
         self.scrollView.sizeConstraint(subView: imageView)
+        imageView.layer.borderColor = UIColor.red.cgColor
+        imageView.layer.borderWidth = 1
         return imageView
     }()
     
@@ -239,45 +243,45 @@ public class CropPickerView: UIView {
         return button
     }()
     
-    private lazy var topButton: LineButton = {
-        let button = LineButton(.top)
-        let cropView = self.cropView
-        self.addSubview(button)
-        self.topConstraint(item: cropView, subView: button, constant: 10)
-        self.centerXConstraint(item: cropView, subView: button)
-        button.addTarget(self, action: #selector(self.cropButtonTopDrag(_:forEvent:)), for: .touchDragInside)
-        return button
-    }()
+//    private lazy var topButton: LineButton = {
+//        let button = LineButton(.top)
+//        let cropView = self.cropView
+//        self.addSubview(button)
+//        self.topConstraint(item: cropView, subView: button, constant: 10)
+//        self.centerXConstraint(item: cropView, subView: button)
+//        button.addTarget(self, action: #selector(self.cropButtonTopDrag(_:forEvent:)), for: .touchDragInside)
+//        return button
+//    }()
     
-    private lazy var leftButton: LineButton = {
-        let button = LineButton(.left)
-        let cropView = self.cropView
-        self.addSubview(button)
-        self.centerYConstraint(item: cropView, subView: button)
-        self.leadingConstraint(item: cropView, subView: button, constant: 10)
-        button.addTarget(self, action: #selector(self.cropButtonLeftDrag(_:forEvent:)), for: .touchDragInside)
-        return button
-    }()
+//    private lazy var leftButton: LineButton = {
+//        let button = LineButton(.left)
+//        let cropView = self.cropView
+//        self.addSubview(button)
+//        self.centerYConstraint(item: cropView, subView: button)
+//        self.leadingConstraint(item: cropView, subView: button, constant: 10)
+//        button.addTarget(self, action: #selector(self.cropButtonLeftDrag(_:forEvent:)), for: .touchDragInside)
+//        return button
+//    }()
     
-    private lazy var rightButton: LineButton = {
-        let button = LineButton(.right)
-        let cropView = self.cropView
-        self.addSubview(button)
-        self.centerYConstraint(item: cropView, subView: button)
-        self.trailingConstraint(item: cropView, subView: button, constant: -10)
-        button.addTarget(self, action: #selector(self.cropButtonRightDrag(_:forEvent:)), for: .touchDragInside)
-        return button
-    }()
-    
-    private lazy var bottomButton: LineButton = {
-        let button = LineButton(.bottom)
-        let cropView = self.cropView
-        self.addSubview(button)
-        self.bottomConstraint(item: cropView, subView: button, constant: -10)
-        self.centerXConstraint(item: cropView, subView: button)
-        button.addTarget(self, action: #selector(self.cropButtonBottomDrag(_:forEvent:)), for: .touchDragInside)
-        return button
-    }()
+//    private lazy var rightButton: LineButton = {
+//        let button = LineButton(.right)
+//        let cropView = self.cropView
+//        self.addSubview(button)
+//        self.centerYConstraint(item: cropView, subView: button)
+//        self.trailingConstraint(item: cropView, subView: button, constant: -10)
+//        button.addTarget(self, action: #selector(self.cropButtonRightDrag(_:forEvent:)), for: .touchDragInside)
+//        return button
+//    }()
+//
+//    private lazy var bottomButton: LineButton = {
+//        let button = LineButton(.bottom)
+//        let cropView = self.cropView
+//        self.addSubview(button)
+//        self.bottomConstraint(item: cropView, subView: button, constant: -10)
+//        self.centerXConstraint(item: cropView, subView: button)
+//        button.addTarget(self, action: #selector(self.cropButtonBottomDrag(_:forEvent:)), for: .touchDragInside)
+//        return button
+//    }()
     
     private lazy var centerButton: LineButton = {
         let button = LineButton(.center)
@@ -287,10 +291,10 @@ public class CropPickerView: UIView {
         self.centerXConstraint(item: self.cropView, subView: button)
         self.centerYConstraint(item: self.cropView, subView: button)
         
-        let leading = NSLayoutConstraint(item: self.leftButton, attribute: .trailing, relatedBy: .greaterThanOrEqual, toItem: button, attribute: .leading, multiplier: 1, constant: 0)
-        let trailing = NSLayoutConstraint(item: self.rightButton, attribute: .leading, relatedBy: .greaterThanOrEqual, toItem: button, attribute: .trailing, multiplier: 1, constant: 0)
-        let top = NSLayoutConstraint(item: self.topButton, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: button, attribute: .top, multiplier: 1, constant: 0)
-        let bottom = NSLayoutConstraint(item: self.bottomButton, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: button, attribute: .bottom, multiplier: 1, constant: 0)
+        let leading = NSLayoutConstraint(item: self.leftTopButton, attribute: .trailing, relatedBy: .greaterThanOrEqual, toItem: button, attribute: .leading, multiplier: 1, constant: 0)
+        let trailing = NSLayoutConstraint(item: self.rightTopButton, attribute: .leading, relatedBy: .greaterThanOrEqual, toItem: button, attribute: .trailing, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: self.rightTopButton, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: button, attribute: .top, multiplier: 1, constant: 0)
+        let bottom = NSLayoutConstraint(item: self.rightBottomButton, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: button, attribute: .bottom, multiplier: 1, constant: 0)
         
         leading.priority = UILayoutPriority(600)
         trailing.priority = UILayoutPriority(600)
@@ -298,7 +302,7 @@ public class CropPickerView: UIView {
         bottom.priority = UILayoutPriority(600)
         
         self.addConstraints([leading, trailing, top, bottom])
-        button.addTarget(self, action: #selector(self.centerDoubleTap(_:)), for: .touchDownRepeat)
+        //button.addTarget(self, action: #selector(self.centerDoubleTap(_:)), for: .touchDownRepeat)
         button.addTarget(self, action: #selector(self.cropButtonCenterDrag(_:forEvent:)), for: .touchDragInside)
         return button
     }()
@@ -312,6 +316,16 @@ public class CropPickerView: UIView {
     private var cropBottomConstraint: NSLayoutConstraint?
     
     private var lineButtonTouchPoint: CGPoint?
+    
+    private var initialLeadingConstant: CGFloat?
+    
+    private var initialTrailingConstant: CGFloat?
+    
+    private var initialTopConstant: CGFloat?
+    
+    private var initialBottomConstant: CGFloat?
+    
+    var ratio: CGFloat?
     
     // MARK: Init
     
@@ -382,13 +396,17 @@ public class CropPickerView: UIView {
         }
     }
     
+    public func cropV(){
+        print ("crop view: \(cropView.frame)")
+    }
+    
 }
 
 // MARK: Private Method Init
 extension CropPickerView {
     // Side button and corner button group of crops
     private var lineButtonGroup: [LineButton] {
-        return [self.leftTopButton, self.leftBottomButton, self.rightTopButton, self.rightBottomButton, self.topButton, self.leftButton, self.bottomButton, self.rightButton, self.centerButton]
+        return [self.leftTopButton, self.leftBottomButton, self.rightTopButton, self.rightBottomButton, self.centerButton]
     }
     
     // Init
@@ -404,15 +422,15 @@ extension CropPickerView {
         self.cropLineHidden(self.image)
         
         self.cropLineColor = self.cropLineColor ?? .white
-        self.scrollMinimumZoomScale = 0.3
-        self.scrollMaximumZoomScale = 5
+//        self.scrollMinimumZoomScale = 0.3
+//        self.scrollMaximumZoomScale = 5
         self.scrollBackgroundColor = self.scrollBackgroundColor ?? .black
         self.imageBackgroundColor = self.imageBackgroundColor ?? .black
         self.dimBackgroundColor = self.dimBackgroundColor ?? UIColor(white: 0, alpha: 0.6)
         
-        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageDoubleTap(_:)))
-        doubleTapGesture.numberOfTapsRequired = 2
-        self.scrollView.addGestureRecognizer(doubleTapGesture)
+//        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageDoubleTap(_:)))
+//        doubleTapGesture.numberOfTapsRequired = 2
+//        self.scrollView.addGestureRecognizer(doubleTapGesture)
         
         self.lineButtonGroup.forEach { (button) in
             button.delegate = self
@@ -428,36 +446,32 @@ extension CropPickerView {
         self.leftBottomButton.alpha = image == nil ? 0 : 1
         self.rightBottomButton.alpha = image == nil ? 0 : 1
         self.rightTopButton.alpha = image == nil ? 0 : 1
-        self.topButton.alpha = image == nil ? 0 : 1
-        self.bottomButton.alpha = image == nil ? 0 : 1
-        self.leftButton.alpha = image == nil ? 0 : 1
-        self.rightButton.alpha = image == nil ? 0 : 1
     }
 }
 
 // MARK: Private Method Touch Action
 extension CropPickerView {
-    // Center Button Double Tap
-    @objc private func centerDoubleTap(_ sender: UITapGestureRecognizer) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.imageDoubleTap(sender)
-        }
-    }
-    
-    // ImageView Double Tap
-    @objc private func imageDoubleTap(_ sender: UITapGestureRecognizer) {
-        if self.scrollView.zoomScale == 1 {
-            self.imageRealSize(true)
-            DispatchQueue.main.async {
-                self.imageMaxAdjustment(animated: true)
-            }
-        } else {
-            self.scrollView.setZoomScale(1, animated: true)
-            DispatchQueue.main.async {
-                self.imageMinAdjustment(animated: true)
-            }
-        }
-    }
+//    // Center Button Double Tap
+//    @objc private func centerDoubleTap(_ sender: UITapGestureRecognizer) {
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//            self.imageDoubleTap(sender)
+//        }
+//    }
+//
+//    // ImageView Double Tap
+//    @objc private func imageDoubleTap(_ sender: UITapGestureRecognizer) {
+//        if self.scrollView.zoomScale == 1 {
+//            self.imageRealSize(true)
+//            DispatchQueue.main.async {
+//                self.imageMaxAdjustment(animated: true)
+//            }
+//        } else {
+//            self.scrollView.setZoomScale(1, animated: true)
+//            DispatchQueue.main.async {
+//                self.imageMinAdjustment(animated: true)
+//            }
+//        }
+//    }
     
     // Touch Down Button
     @objc private func cropButtonTouchDown(_ sender: LineButton, forEvent event: UIEvent) {
@@ -480,8 +494,29 @@ extension CropPickerView {
     }
     
     private func cropButtonDrag(_ sender: LineButton, forEvent event: UIEvent) -> CGPoint? {
+        print("touches: \(event.touches(for: sender)!)")
         guard let touch = event.touches(for: sender)?.first else { return nil }
         return touch.location(in: self.cropView)
+    }
+    
+    private func cropButtonDragByWindow(_ sender: LineButton, forEvent event: UIEvent) -> (CGFloat, CGFloat){
+        var hMovment = (event.touches(for: sender)?.first!.location(in: window))!.x - (event.touches(for: sender)?.first!.previousLocation(in: window))!.x
+       var vMovment = (event.touches(for: sender)?.first!.location(in: window))!.y - (event.touches(for: sender)?.first!.previousLocation(in: window))!.y
+       let hMovmentAbs = abs(hMovment)
+       let vMovmentAbs = abs(vMovment)
+       
+       
+       let hRatio = hMovmentAbs / image!.size.width
+       let vRatio = vMovmentAbs / image!.size.height
+       print("moved \(hMovment) right which is \(hRatio) of image width and \(vMovment) down which is \(vRatio) of image height")
+       let imageRatio = image!.size.width / image!.size.height
+       if hRatio > vRatio{
+           vMovment = hMovment * (1 / imageRatio)
+       }
+       else{
+           hMovment = vMovment * imageRatio
+       }
+        return (hMovment, vMovment)
     }
     
     @objc private func cropButtonLeftTopDrag(_ sender: LineButton, forEvent event: UIEvent) {
@@ -492,16 +527,33 @@ extension CropPickerView {
         guard let touchPoint = self.lineButtonTouchPoint,
             let currentPoint = self.cropButtonDrag(sender, forEvent: event) else { return }
         
-        let hConstant = cropLeadingConstraint.constant - (currentPoint.x - touchPoint.x)
-        let vConstant = cropTopConstraint.constant - (currentPoint.y - touchPoint.y)
+        self.lineButtonTouchPoint?.x = currentPoint.x
+        self.lineButtonTouchPoint?.y = currentPoint.y
+        print("touch point: \(touchPoint)")
+        print("current point: \(currentPoint)")
+//        var hMovement = abs(currentPoint.x - touchPoint.x)
+//        var vMovement = abs(currentPoint.y - touchPoint.y)
+       
+        let (hMovment, vMovment) = cropButtonDragByWindow(sender, forEvent: event)
+        print ("The new movments are:\nright: \(hMovment), down: \(vMovment)")
         
-        if (hConstant <= 0 || currentPoint.x - touchPoint.x > 0) && self.bounds.width + (hConstant - cropTrailingConstraint.constant) > 100 {
+        let hConstant = cropLeadingConstraint.constant - hMovment
+        let vConstant = cropTopConstraint.constant - vMovment
+        
+        if (hConstant <= 0 || currentPoint.x - touchPoint.x > 0) &&
+            self.bounds.width + (hConstant - cropTrailingConstraint.constant) > 40 &&
+            hConstant <= initialLeadingConstant! &&
+            (vConstant <= 0 || currentPoint.y - touchPoint.y > 0) &&
+            self.bounds.height + (vConstant - cropBottomConstraint.constant) > 40 &&
+            vConstant <= initialTopConstant!{
             self.cropLeadingConstraint?.constant = hConstant
-        }
-        if (vConstant <= 0 || currentPoint.y - touchPoint.y > 0) && self.bounds.height + (vConstant - cropBottomConstraint.constant) > 100 {
             self.cropTopConstraint?.constant = vConstant
         }
+        else{
+            print("one of the conditions isn't true")
+        }
         self.dimLayerMask(animated: false)
+        //self.lineButtonTouchPoint = currentPoint
     }
     
     @objc private func cropButtonLeftBottomDrag(_ sender: LineButton, forEvent event: UIEvent) {
@@ -513,15 +565,50 @@ extension CropPickerView {
             let currentPoint = self.cropButtonDrag(sender, forEvent: event) else { return }
         
         self.lineButtonTouchPoint?.y = currentPoint.y
+        self.lineButtonTouchPoint?.x = currentPoint.x
         
-        let hConstant = cropLeadingConstraint.constant - (currentPoint.x - touchPoint.x)
-        let vConstant = cropBottomConstraint.constant - (currentPoint.y - touchPoint.y)
+       var hMovment = (event.touches(for: sender)?.first!.location(in: window))!.x - (event.touches(for: sender)?.first!.previousLocation(in: window))!.x
+        var vMovment = (event.touches(for: sender)?.first!.location(in: window))!.y - (event.touches(for: sender)?.first!.previousLocation(in: window))!.y
+        let hMovmentAbs = abs(hMovment)
+        let vMovmentAbs = abs(vMovment)
         
-        if (hConstant <= 0 || currentPoint.x - touchPoint.x > 0) && self.bounds.width + (hConstant - cropTrailingConstraint.constant) > 100 {
+        
+        let hRatio = hMovmentAbs / image!.size.width
+        let vRatio = vMovmentAbs / image!.size.height
+        print("moved \(hMovment) right which is \(hRatio) of image width and \(vMovment) down which is \(vRatio) of image height")
+        let imageRatio = image!.size.width / image!.size.height
+        if hRatio > vRatio{
+            vMovment = -hMovment * (1 / imageRatio)
+        }
+        else{
+            hMovment = -vMovment * imageRatio
+        }
+        print ("hMovment: \(hMovment)\nvMovment: \(vMovment)")
+        
+//        let hConstant = cropLeadingConstraint.constant - (currentPoint.x - touchPoint.x)
+//        let vConstant = cropBottomConstraint.constant - (currentPoint.y - touchPoint.y)
+        
+        let hConstant = cropLeadingConstraint.constant - hMovment
+        let vConstant = cropBottomConstraint.constant - vMovment
+        print("touch point: \(touchPoint)")
+        print("current point: \(currentPoint)")
+        print("hConstant: \(hConstant)")
+        print("vConstant: \(vConstant)")
+        print("initialLeadingConstant:\(initialLeadingConstant!)")
+        print("cropTrailingConstant: \(cropTrailingConstraint.constant)")
+        print("initialBottomConstant:\(initialBottomConstant!)")
+        print("cropTopConstant: \(cropTopConstraint.constant)")
+        if (hConstant <= 0 || currentPoint.x - touchPoint.x > 0) &&
+            self.bounds.width + (hConstant - cropTrailingConstraint.constant) > 40 &&
+            hConstant <= initialLeadingConstant! &&
+            (vConstant > 0 || currentPoint.y - touchPoint.y < 0) &&
+            self.bounds.height - (vConstant - cropTopConstraint.constant) > 40 &&
+            vConstant >= initialBottomConstant!{
+            self.cropBottomConstraint?.constant = vConstant
             self.cropLeadingConstraint?.constant = hConstant
         }
-        if (vConstant > 0 || currentPoint.y - touchPoint.y < 0) && self.bounds.height - (vConstant - cropTopConstraint.constant) > 100 {
-            self.cropBottomConstraint?.constant = vConstant
+        else{
+            print("one of the conditions isn't true")
         }
         self.dimLayerMask(animated: false)
     }
@@ -535,14 +622,38 @@ extension CropPickerView {
             let currentPoint = self.cropButtonDrag(sender, forEvent: event) else { return }
         
         self.lineButtonTouchPoint?.x = currentPoint.x
+        self.lineButtonTouchPoint?.y = currentPoint.y
         
-        let hConstant = cropTrailingConstraint.constant - (currentPoint.x - touchPoint.x)
-        let vConstant = cropTopConstraint.constant - (currentPoint.y - touchPoint.y)
+        var hMovment = (event.touches(for: sender)?.first!.location(in: window))!.x - (event.touches(for: sender)?.first!.previousLocation(in: window))!.x
+        var vMovment = (event.touches(for: sender)?.first!.location(in: window))!.y - (event.touches(for: sender)?.first!.previousLocation(in: window))!.y
+        let hMovmentAbs = abs(hMovment)
+        let vMovmentAbs = abs(vMovment)
         
-        if (hConstant > 0 || currentPoint.x - touchPoint.x < 0) && self.bounds.width - (hConstant - cropLeadingConstraint.constant) > 100 {
-            self.cropTrailingConstraint?.constant = hConstant
+        
+        let hRatio = hMovmentAbs / image!.size.width
+        let vRatio = vMovmentAbs / image!.size.height
+        print("moved \(hMovment) right which is \(hRatio) of image width and \(vMovment) down which is \(vRatio) of image height")
+        let imageRatio = image!.size.width / image!.size.height
+        if hRatio > vRatio{
+            vMovment = -hMovment * (1 / imageRatio)
         }
-        if (vConstant <= 0 || currentPoint.y - touchPoint.y > 0) && self.bounds.height + (vConstant - cropBottomConstraint.constant) > 100 {
+        else{
+            hMovment = -vMovment * imageRatio
+        }
+        
+//        let hConstant = cropTrailingConstraint.constant - (currentPoint.x - touchPoint.x)
+//        let vConstant = cropTopConstraint.constant - (currentPoint.y - touchPoint.y)
+
+        let hConstant = cropTrailingConstraint.constant - hMovment
+        let vConstant = cropTopConstraint.constant - vMovment
+        
+        if (hConstant > 0 || currentPoint.x - touchPoint.x < 0) &&
+            self.bounds.width - (hConstant - cropLeadingConstraint.constant) > 40 &&
+            hConstant >= initialTrailingConstant! &&
+            (vConstant <= 0 || currentPoint.y - touchPoint.y > 0)  &&
+            self.bounds.height + (vConstant - cropBottomConstraint.constant) > 40 &&
+            vConstant <= initialTopConstant!{
+            self.cropTrailingConstraint?.constant = hConstant
             self.cropTopConstraint?.constant = vConstant
         }
         self.dimLayerMask(animated: false)
@@ -559,74 +670,19 @@ extension CropPickerView {
         self.lineButtonTouchPoint?.x = currentPoint.x
         self.lineButtonTouchPoint?.y = currentPoint.y
         
-        let hConstant = cropTrailingConstraint.constant - (currentPoint.x - touchPoint.x)
-        let vConstant = cropBottomConstraint.constant - (currentPoint.y - touchPoint.y)
         
-        if (hConstant > 0 || currentPoint.x - touchPoint.x < 0) && self.bounds.width - (hConstant - cropLeadingConstraint.constant) > 100 {
-            self.cropTrailingConstraint?.constant = hConstant
-        }
-        if (vConstant > 0 || currentPoint.y - touchPoint.y < 0) && self.bounds.height - (vConstant - cropTopConstraint.constant) > 100 {
+        let (hMovment, vMovment) = cropButtonDragByWindow(sender, forEvent: event)
+        let hConstant = cropTrailingConstraint.constant - hMovment
+        let vConstant = cropBottomConstraint.constant - vMovment
+        
+        if (hConstant > 0 || currentPoint.x - touchPoint.x < 0) &&
+            self.bounds.width - (hConstant - cropLeadingConstraint.constant) > 40 &&
+            hConstant >= initialTrailingConstant! &&
+            (vConstant > 0 || currentPoint.y - touchPoint.y < 0) &&
+            self.bounds.height - (vConstant - cropTopConstraint.constant) > 40 &&
+            vConstant >= initialBottomConstant!{
             self.cropBottomConstraint?.constant = vConstant
-        }
-        self.dimLayerMask(animated: false)
-    }
-    
-    @objc private func cropButtonLeftDrag(_ sender: LineButton, forEvent event: UIEvent) {
-        guard let cropLeadingConstraint = self.cropLeadingConstraint,
-            let cropTrailingConstraint = self.cropTrailingConstraint else { return }
-        guard let touchPoint = self.lineButtonTouchPoint,
-            let currentPoint = self.cropButtonDrag(sender, forEvent: event) else { return }
-        
-        let hConstant = cropLeadingConstraint.constant - (currentPoint.x - touchPoint.x)
-        
-        if (hConstant <= 0 || currentPoint.x - touchPoint.x > 0) && self.bounds.width + (hConstant - cropTrailingConstraint.constant) > 100 {
-            self.cropLeadingConstraint?.constant = hConstant
-        }
-        self.dimLayerMask(animated: false)
-    }
-    
-    @objc private func cropButtonTopDrag(_ sender: LineButton, forEvent event: UIEvent) {
-        guard let cropTopConstraint =  self.cropTopConstraint,
-            let cropBottomConstraint =  self.cropBottomConstraint else { return }
-        guard let touchPoint = self.lineButtonTouchPoint,
-            let currentPoint = self.cropButtonDrag(sender, forEvent: event) else { return }
-        
-        let vConstant = cropTopConstraint.constant - (currentPoint.y - touchPoint.y)
-        
-        if (vConstant <= 0 || currentPoint.y - touchPoint.y > 0) && self.bounds.height + (vConstant - cropBottomConstraint.constant) > 100 {
-            self.cropTopConstraint?.constant = vConstant
-        }
-        self.dimLayerMask(animated: false)
-    }
-    
-    @objc private func cropButtonRightDrag(_ sender: LineButton, forEvent event: UIEvent) {
-        guard let cropLeadingConstraint = self.cropLeadingConstraint,
-            let cropTrailingConstraint = self.cropTrailingConstraint else { return }
-        guard let touchPoint = self.lineButtonTouchPoint,
-            let currentPoint = self.cropButtonDrag(sender, forEvent: event) else { return }
-        
-        self.lineButtonTouchPoint?.x = currentPoint.x
-        
-        let hConstant = cropTrailingConstraint.constant - (currentPoint.x - touchPoint.x)
-        
-        if (hConstant > 0 || currentPoint.x - touchPoint.x < 0) && self.bounds.width - (hConstant - cropLeadingConstraint.constant) > 100 {
             self.cropTrailingConstraint?.constant = hConstant
-        }
-        self.dimLayerMask(animated: false)
-    }
-    
-    @objc private func cropButtonBottomDrag(_ sender: LineButton, forEvent event: UIEvent) {
-        guard let cropTopConstraint =  self.cropTopConstraint,
-            let cropBottomConstraint =  self.cropBottomConstraint else { return }
-        guard let touchPoint = self.lineButtonTouchPoint,
-            let currentPoint = self.cropButtonDrag(sender, forEvent: event) else { return }
-        
-        self.lineButtonTouchPoint?.y = currentPoint.y
-        
-        let vConstant = cropBottomConstraint.constant - (currentPoint.y - touchPoint.y)
-        
-        if (vConstant > 0 || currentPoint.y - touchPoint.y < 0) && self.bounds.height - (vConstant - cropTopConstraint.constant) > 100 {
-            self.cropBottomConstraint?.constant = vConstant
         }
         self.dimLayerMask(animated: false)
     }
@@ -643,7 +699,9 @@ extension CropPickerView {
         let rConstant = cropTrailingConstraint.constant - (currentPoint.x - touchPoint.x)
         
         if (lConstant <= 0 || currentPoint.x - touchPoint.x > 0) &&
-            (rConstant > 0 || currentPoint.x - touchPoint.x < 0) {
+            (rConstant > 0 || currentPoint.x - touchPoint.x < 0) &&
+            rConstant >= initialTrailingConstant! &&
+            lConstant <= initialLeadingConstant!{
             self.cropLeadingConstraint?.constant = lConstant
             self.cropTrailingConstraint?.constant = rConstant
         }
@@ -651,7 +709,9 @@ extension CropPickerView {
         let tConstant = cropTopConstraint.constant - (currentPoint.y - touchPoint.y)
         let bConstant = cropBottomConstraint.constant - (currentPoint.y - touchPoint.y)
         if (tConstant <= 0 || currentPoint.y - touchPoint.y > 0) &&
-            (bConstant > 0 || currentPoint.y - touchPoint.y < 0) {
+            (bConstant > 0 || currentPoint.y - touchPoint.y < 0) &&
+            tConstant <= initialTopConstant! &&
+            bConstant >= initialBottomConstant!{
             self.cropTopConstraint?.constant = tConstant
             self.cropBottomConstraint?.constant = bConstant
         }
@@ -710,6 +770,10 @@ extension CropPickerView {
         self.cropTrailingConstraint?.constant = point.x
         self.cropTopConstraint?.constant = -point.y
         self.cropBottomConstraint?.constant = point.y
+        self.initialLeadingConstant = -point.x
+        self.initialTrailingConstant = point.x
+        self.initialTopConstant = -point.y
+        self.initialBottomConstant = point.y
         if animated {
             self.dimLayerMask(duration, animated: animated)
             UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
