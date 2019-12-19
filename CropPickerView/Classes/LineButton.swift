@@ -144,13 +144,13 @@ enum ButtonLineType {
     class EdgeView: LineView {
         override func draw(_ rect: CGRect) {
             let path = UIBezierPath()
-                .move(6, 6)
-                .line(6, 20)
-                .line(8, 20)
-                .line(8, 8)
-                .line(20, 8)
-                .line(20, 6)
-                .line(6, 6)
+                .move(0, 0)
+                .line(0, 20)
+                .line(2, 20)
+                .line(2, 2)
+                .line(20, 2)
+                .line(20, 0)
+                .line(0, 0)
             self.apply(path)
         }
     }
