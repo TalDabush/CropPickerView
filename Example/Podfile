@@ -1,10 +1,8 @@
 use_frameworks!
 
 target 'CropPickerView_Example' do
-  pod 'CropPickerView'
-
-  target 'CropPickerView_Tests' do
-    inherit! :search_paths
+    use_frameworks!
+    pod 'CropPickerView', :git =>'https://github.com/TalDabush/CropPickerView'
 
     
   end
