@@ -51,9 +51,36 @@ public class CropPickerView: UIView {
             self.dimLayerMask(animated: false)
             DispatchQueue.main.async {
                 self.imageMinAdjustment(animated: false)
-                self.adjustImageToRatio()
+                self.adjustImageToRatio(zoom: self.zoom)
             }
         }
+    }
+    
+    public var zoom: AnyObject = ["x1": 0.1, "y1": 0.1, "x2": 0.9, "y2": 0.9] as AnyObject{
+        didSet{
+             self.adjustImageToRatio(zoom: zoom)
+        }
+    }
+    
+    public func setDefaultZoom(){
+        let scaledImageFrame : CGRect = imageView.frameForImageInImageViewAspectFit
+        let imageFrameWidth = scaledImageFrame.size.width
+        let imageFrameHeight = scaledImageFrame.size.height
+        var x1 : CGFloat = 0.1
+        var y1 : CGFloat = 0.1
+        if imageFrameHeight > imageFrameWidth{
+            let width = 0.8 * imageFrameWidth
+            var height = width
+            height = height / self.imageRatio
+            y1 = ((imageFrameHeight - height) / 2) / imageFrameHeight
+        }
+        else{
+            let height = 0.8 * imageFrameHeight
+            var width = height
+            width = width * self.imageRatio
+            x1 = ((imageFrameWidth - width) / 2) / imageFrameWidth
+        }
+        setImageZoom(withZoom: ["x1": x1, "y1": y1, "x2": 0.9, "y2": 0.9] as AnyObject)
     }
     
     // Set Image
@@ -160,37 +187,50 @@ public class CropPickerView: UIView {
     
     public var imageRatio : CGFloat = 1{
         didSet{
-            adjustImageToRatio()
+            adjustImageToRatio(zoom: self.zoom as AnyObject)
         }
     }
     
+    public func setImageZoom(withZoom zoom
+        :AnyObject){
+        self.zoom = zoom
+    }
     
-    private func adjustImageToRatio(){
+    
+    private func adjustImageToRatio(zoom: AnyObject){
         guard let cropLeadingConstraint = self.cropLeadingConstraint,
            let cropTrailingConstraint = self.cropTrailingConstraint,
            let cropTopConstraint =  self.cropTopConstraint,
-           let cropBottomConstraint =  self.cropBottomConstraint else { return }
+           let cropBottomConstraint =  self.cropBottomConstraint,
+            let x1 = zoom["x1"] as? CGFloat,
+            let y1 = zoom["y1"] as? CGFloat,
+            let x2 = zoom["x2"] as? CGFloat,
+            let y2 = zoom["y2"] as? CGFloat
+            else { return }
             let scaledImageFrame : CGRect = imageView.frameForImageInImageViewAspectFit
             let imageFrameWidth = scaledImageFrame.size.width
             let imageFrameHeight = scaledImageFrame.size.height
             if imageFrameHeight > imageFrameWidth{
-                let leadingTrailingConstant = (0.1 * imageFrameWidth)
-                cropLeadingConstraint.constant = cropLeadingConstraint.constant - leadingTrailingConstant
-                cropTrailingConstraint.constant = cropTrailingConstraint.constant + leadingTrailingConstant
-                let newWidth = imageFrameWidth - (leadingTrailingConstant * 2)
-                let topBottomConstraintConstant = (imageFrameHeight - (newWidth * 1/imageRatio)) / 2
-                cropTopConstraint.constant = cropTopConstraint.constant - topBottomConstraintConstant
-                cropBottomConstraint.constant = cropBottomConstraint.constant + topBottomConstraintConstant
+                let leadingConstant = (x1 * imageFrameWidth)
+                let trailingConstant = ((1 - x2) * imageFrameWidth)
+                cropLeadingConstraint.constant = cropLeadingConstraint.constant - leadingConstant
+                cropTrailingConstraint.constant = cropTrailingConstraint.constant + trailingConstant
+                let newWidth = imageFrameWidth - (leadingConstant + trailingConstant)
+                let topConstant = y1 * imageFrameHeight
+                let bottomConstant = imageFrameHeight - ((newWidth / imageRatio) + topConstant)
+                cropTopConstraint.constant = cropTopConstraint.constant - topConstant
+                cropBottomConstraint.constant = cropBottomConstraint.constant + bottomConstant
             }
-                
             else{
-                let topBottomConstraintConstant = (0.1 * imageFrameHeight)
-                cropTopConstraint.constant = cropTopConstraint.constant - topBottomConstraintConstant
-                cropBottomConstraint.constant = cropBottomConstraint.constant + topBottomConstraintConstant
-                let newHeight = imageFrameHeight - (topBottomConstraintConstant * 2)
-                let leadingTrailingConstraintConstant = (imageFrameWidth - (newHeight * imageRatio)) / 2
-                cropLeadingConstraint.constant = cropLeadingConstraint.constant - leadingTrailingConstraintConstant
-                cropTrailingConstraint.constant = cropTrailingConstraint.constant + leadingTrailingConstraintConstant
+                let topConstant = y1 * imageFrameHeight
+                let bottomConstant = ((1 - y2) * imageFrameHeight)
+                cropTopConstraint.constant = cropTopConstraint.constant - topConstant
+                cropBottomConstraint.constant = cropBottomConstraint.constant + bottomConstant
+                let newHeight = imageFrameHeight - (topConstant + bottomConstant)
+                let leadingConstant = x1 * imageFrameWidth
+                let trailingConstant = imageFrameWidth - ((newHeight * imageRatio) + leadingConstant)
+                cropLeadingConstraint.constant = cropLeadingConstraint.constant - leadingConstant
+                cropTrailingConstraint.constant = cropTrailingConstraint.constant + trailingConstant
             }
             self.dimLayerMask(animated: false)
     }
