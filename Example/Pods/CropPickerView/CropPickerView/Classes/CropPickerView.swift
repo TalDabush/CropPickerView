@@ -63,7 +63,7 @@ public class CropPickerView: UIView {
     }
     
     public func setDefaultZoom(){
-        let scaledImageFrsame : CGRect = imageView.frameForImageInImageViewAspectFit
+        let scaledImageFsrame : CGRect = imageView.frameForImageInImageViewAspectFit
         let imageFrameWidth = scaledImageFrame.size.width
         let imageFrameHeight = scaledImageFrame.size.height
         var x1 : CGFloat = 0.1
