@@ -6,4 +6,3 @@ target 'CropPickerView_Example' do
 
     
   end
-end

@@ -13,7 +13,6 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		9C09B8CF2EDAEADDD24C6CCB /* Pods_CropPickerView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53633F80BB32EB9BCEEBF4E9 /* Pods_CropPickerView_Tests.framework */; };
 		E0302E9B21B3DC9A00B697F8 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = E0302E9721B3DC9900B697F8 /* 5.png */; };
 		E0302E9C21B3DC9A00B697F8 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = E0302E9821B3DC9900B697F8 /* 2.png */; };
 		E0302E9D21B3DC9A00B697F8 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = E0302E9921B3DC9900B697F8 /* 3.png */; };
@@ -35,7 +34,6 @@
 /* Begin PBXFileReference section */
 		050A8FA8918A210F6BDAE911 /* Pods-CropPickerView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CropPickerView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CropPickerView_Example/Pods-CropPickerView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		272117B5DD069CE942025D66 /* Pods-CropPickerView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CropPickerView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CropPickerView_Example/Pods-CropPickerView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		53633F80BB32EB9BCEEBF4E9 /* Pods_CropPickerView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CropPickerView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F57CC6CC55901A56F16B8FA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* CropPickerView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CropPickerView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,8 +48,6 @@
 		74D439B664D481D6BF749D81 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		76EA7B966C513FC7CB17991A /* Pods_CropPickerView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CropPickerView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E4B07746C106C1FA3E932E /* CropPickerView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CropPickerView.podspec; path = ../CropPickerView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		C10CDC346478C54ADB121933 /* Pods-CropPickerView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CropPickerView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CropPickerView_Tests/Pods-CropPickerView_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D677A2DB30D32513E972FA49 /* Pods-CropPickerView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CropPickerView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CropPickerView_Tests/Pods-CropPickerView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E0302E9721B3DC9900B697F8 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		E0302E9821B3DC9900B697F8 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		E0302E9921B3DC9900B697F8 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -72,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C09B8CF2EDAEADDD24C6CCB /* Pods_CropPickerView_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				76EA7B966C513FC7CB17991A /* Pods_CropPickerView_Example.framework */,
-				53633F80BB32EB9BCEEBF4E9 /* Pods_CropPickerView_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -168,8 +162,6 @@
 			children = (
 				272117B5DD069CE942025D66 /* Pods-CropPickerView_Example.debug.xcconfig */,
 				050A8FA8918A210F6BDAE911 /* Pods-CropPickerView_Example.release.xcconfig */,
-				D677A2DB30D32513E972FA49 /* Pods-CropPickerView_Tests.debug.xcconfig */,
-				C10CDC346478C54ADB121933 /* Pods-CropPickerView_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -200,7 +192,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "CropPickerView_Tests" */;
 			buildPhases = (
-				15DB7CEDB052CEA761664919 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
@@ -283,24 +274,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		15DB7CEDB052CEA761664919 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CropPickerView_Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1AC9EA12BDF2CF183706A9D7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,7 +298,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CropPickerView_Example/Pods-CropPickerView_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CropPickerView_Example/Pods-CropPickerView_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CropPickerView/CropPickerView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -334,7 +307,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CropPickerView_Example/Pods-CropPickerView_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CropPickerView_Example/Pods-CropPickerView_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -526,7 +499,6 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D677A2DB30D32513E972FA49 /* Pods-CropPickerView_Tests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 5M76RX4UMK;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -549,7 +521,6 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C10CDC346478C54ADB121933 /* Pods-CropPickerView_Tests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 5M76RX4UMK;
 				FRAMEWORK_SEARCH_PATHS = (

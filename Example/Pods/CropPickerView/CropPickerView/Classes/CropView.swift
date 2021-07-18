@@ -217,10 +217,10 @@ class CropView: UIView {
     private func initVars() {
         self.isUserInteractionEnabled = false
         self.backgroundColor = .clear
-        self.topLineView.alpha = 1
-        self.leftLineView.alpha = 1
-        self.bottomLineView.alpha = 1
-        self.rightLineView.alpha = 1
+        self.topLineView.alpha = 0.5
+        self.leftLineView.alpha = 0.5
+        self.bottomLineView.alpha = 0.5
+        self.rightLineView.alpha = 0.5
         self.horizontalLeftLineView.alpha = 0
         self.horizontalRightLineView.alpha = 0
         self.verticalTopLineView.alpha = 0
@@ -243,10 +243,10 @@ class CropView: UIView {
                     self.verticalTopLineView.alpha = 0
                     self.verticalBottomLineView.alpha = 0
                 } else {
-                    self.horizontalRightLineView.alpha = 1
-                    self.horizontalLeftLineView.alpha = 1
-                    self.verticalTopLineView.alpha = 1
-                    self.verticalBottomLineView.alpha = 1
+                    self.horizontalRightLineView.alpha = 0.5
+                    self.horizontalLeftLineView.alpha = 0.5
+                    self.verticalTopLineView.alpha = 0.5
+                    self.verticalBottomLineView.alpha = 0.5
                 }
             }
         } else {
@@ -256,10 +256,10 @@ class CropView: UIView {
                 self.verticalTopLineView.alpha = 0
                 self.verticalBottomLineView.alpha = 0
             } else {
-                self.horizontalRightLineView.alpha = 1
-                self.horizontalLeftLineView.alpha = 1
-                self.verticalTopLineView.alpha = 1
-                self.verticalBottomLineView.alpha = 1
+                self.horizontalRightLineView.alpha = 0.5
+                self.horizontalLeftLineView.alpha = 0.5
+                self.verticalTopLineView.alpha = 0.5
+                self.verticalBottomLineView.alpha = 0.5
             }
         }
     }

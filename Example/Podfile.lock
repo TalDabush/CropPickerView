@@ -2,15 +2,20 @@ PODS:
   - CropPickerView (0.1.3)
 
 DEPENDENCIES:
-  - CropPickerView
+  - CropPickerView (from `https://github.com/TalDabush/CropPickerView`)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - CropPickerView
+EXTERNAL SOURCES:
+  CropPickerView:
+    :git: https://github.com/TalDabush/CropPickerView
+
+CHECKOUT OPTIONS:
+  CropPickerView:
+    :commit: 18131f681e8e7d86b72c6a0eb5960ee7b1126e00
+    :git: https://github.com/TalDabush/CropPickerView
 
 SPEC CHECKSUMS:
   CropPickerView: ecf0c8d77fc876c114a97c5481dd86903ab61314
 
-PODFILE CHECKSUM: 87f1c43c1eb5eb955797447e9925e7a443cb514b
+PODFILE CHECKSUM: 23562d057e70f931fb51c1eda1f717c2106df63a
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.10.1
