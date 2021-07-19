@@ -55,7 +55,6 @@ class LineButton: UIButton {
     init(_ type: ButtonLineType) {
         self.type = type
         super.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        
         self.setTitle(nil, for: .normal)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -66,6 +65,25 @@ class LineButton: UIButton {
     
     func edgeLine(_ color: UIColor?) {
         self.setImage(self.type.view(color)?.imageWithView?.withRenderingMode(.alwaysOriginal), for: .normal)
+        if #available(iOS 9.0, *) {
+            imageView?.translatesAutoresizingMaskIntoConstraints = false
+            switch type {
+            case .leftBottom:
+                imageView?.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+                imageView?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+            case .leftTop:
+                imageView?.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+                imageView?.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+            case.rightTop:
+                imageView?.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
+                imageView?.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+            case .rightBottom:
+                imageView?.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
+                imageView?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+            default:
+                break
+            }
+        }
     }
 }
 
