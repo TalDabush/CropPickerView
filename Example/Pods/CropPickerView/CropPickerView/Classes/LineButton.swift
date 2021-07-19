@@ -40,17 +40,24 @@ class LineButton: UIButton {
     }
     
     // MARK: Init
+    func addEdgeButtonsCostraints(view: UIView) {
+        if type != .center {
+            if #available(iOS 9.0, *) {
+                NSLayoutConstraint.activate([
+                    self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.33),
+                    self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.33)
+                ])
+            }
+            self.alpha = 0
+        }
+    }
+    
     init(_ type: ButtonLineType) {
         self.type = type
         super.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         
         self.setTitle(nil, for: .normal)
         self.translatesAutoresizingMaskIntoConstraints = false
-        if type != .center {
-            self.widthConstraint(constant: 50)
-            self.heightConstraint(constant: 50)
-            self.alpha = 0
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -156,13 +163,13 @@ enum ButtonLineType {
     }
     class SideView: LineView {
         override func draw(_ rect: CGRect) {
-            let path = UIBezierPath()
-                .move(15, 6)
-                .line(35, 6)
-                .line(35, 8)
-                .line(15, 8)
-                .line(15, 6)
-            self.apply(path)
+//            let path = UIBezierPath()
+//                .move(15, 6)
+//                .line(35, 6)
+//                .line(35, 8)
+//                .line(15, 8)
+//                .line(15, 6)
+//            self.apply(path)
         }
     }
 }
